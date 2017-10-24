@@ -11,7 +11,7 @@
 2) Clone the repository
 ``git clone https://github.com/Thananyx/esx_mafiajob.git``
 
-3) Import esx_mafiajob.sql in your database
+3) Import ``esx_mafiajob.sql`` in your database
 
 4) Add this in your server.cfg :
 ``start esx_mafiajob``
