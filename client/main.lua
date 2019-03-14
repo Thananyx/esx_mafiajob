@@ -1342,23 +1342,26 @@ end)
 
 -- Create blips
 Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(1000)
+		if PlayerData.job ~= nil and PlayerData.job.name == 'mafia' then
+		  for k,v in pairs(Config.MafiaStations) do
 
-  for k,v in pairs(Config.MafiaStations) do
+			local blip = AddBlipForCoord(v.Blip.Pos.x, v.Blip.Pos.y, v.Blip.Pos.z)
 
-    local blip = AddBlipForCoord(v.Blip.Pos.x, v.Blip.Pos.y, v.Blip.Pos.z)
+			SetBlipSprite (blip, v.Blip.Sprite)
+			SetBlipDisplay(blip, v.Blip.Display)
+			SetBlipScale  (blip, v.Blip.Scale)
+			SetBlipColour (blip, v.Blip.Colour)
+			SetBlipAsShortRange(blip, true)
 
-    SetBlipSprite (blip, v.Blip.Sprite)
-    SetBlipDisplay(blip, v.Blip.Display)
-    SetBlipScale  (blip, v.Blip.Scale)
-    SetBlipColour (blip, v.Blip.Colour)
-    SetBlipAsShortRange(blip, true)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString(_U('map_blip'))
+			EndTextCommandSetBlipName(blip)
 
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(_U('map_blip'))
-    EndTextCommandSetBlipName(blip)
-
-  end
-
+		  end
+		end
+	end
 end)
 
 -- Display markers
